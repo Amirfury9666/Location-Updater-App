@@ -5,6 +5,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
@@ -24,6 +25,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
+
 /**
  * Created By Amir Fury on 08/06/20
  * Email fury.amir93@gmail.com
@@ -33,6 +35,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), KodeinAware {
     override val kodein: Kodein by kodein()
 
     private var isServiceRunning = false
+    private lateinit var locationManager: LocationManager
     private val locationAdapter = LocationAdapter()
     private lateinit var locationViewModel: LocationViewModel
     private val _viewModelFactory: ViewModelFactory by instance()
@@ -86,7 +89,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), KodeinAware {
     }
 
     private fun startLocationUpdates() {
-        if (!isPermissionGranted()){
+        if (!isPermissionGranted()) {
             askForPermission()
             return
         }
@@ -106,24 +109,35 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(), KodeinAware {
 
     }
 
-    private fun showActions(isServiceRunning : Boolean){
-        val itemOne = arrayOf("Stop Updating Location","Delete All Locations","Cancel")
-        val itemTwo = arrayOf("Start Updating Location","Delete All Locations","Cancel")
+    private fun isLocationEnabled(): Boolean {
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+    }
+
+    private fun showActions(isServiceRunning: Boolean) {
+
+        if (!isLocationEnabled()){
+            toast("Please Turn On Location")
+            return
+        }
+
+        val itemOne = arrayOf("Stop Updating Location", "Delete All Locations", "Cancel")
+        val itemTwo = arrayOf("Start Updating Location", "Delete All Locations", "Cancel")
         val builder = AlertDialog.Builder(this)
-        if (isServiceRunning){
+        if (isServiceRunning) {
             builder.setItems(itemOne) { dialog, which ->
-                when(which){
-                    0-> stopLocationUpdates()
-                    1-> locationViewModel.deleteLocation()
-                    2-> dialog.dismiss()
+                when (which) {
+                    0 -> stopLocationUpdates()
+                    1 -> locationViewModel.deleteLocation()
+                    2 -> dialog.dismiss()
                 }
             }
-        }else{
+        } else {
             builder.setItems(itemTwo) { dialog, which ->
-                when(which){
-                    0-> startLocationUpdates()
-                    1-> locationViewModel.deleteLocation()
-                    2-> dialog.dismiss()
+                when (which) {
+                    0 -> startLocationUpdates()
+                    1 -> locationViewModel.deleteLocation()
+                    2 -> dialog.dismiss()
                 }
             }
         }
