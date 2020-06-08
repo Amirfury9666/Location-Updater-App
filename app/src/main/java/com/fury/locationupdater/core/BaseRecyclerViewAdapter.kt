@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fury.locationupdater.BR
 import com.fury.locationupdater.listener.ItemClickListener
-
+/**
+ * Created By Amir Fury on 08/06/20
+ * Email fury.amir93@gmail.com
+ */
 abstract class BaseRecyclerViewAdapter<T>(diffItemCallback: DiffUtil.ItemCallback<T>) :
     ListAdapter<T, BaseRecyclerViewAdapter.BaseViewHolder<T>>(diffItemCallback) {
 

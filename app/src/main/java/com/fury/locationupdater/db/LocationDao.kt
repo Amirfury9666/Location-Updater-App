@@ -6,7 +6,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
-
+/**
+ * Created By Amir Fury on 08/06/20
+ * Email fury.amir93@gmail.com
+ */
 @Dao
 interface LocationDao{
 

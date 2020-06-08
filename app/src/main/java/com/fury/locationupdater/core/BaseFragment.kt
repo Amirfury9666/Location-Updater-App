@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 /**
- * Created By Amir Fury on 20/04/20
+ * Created By Amir Fury on 08/06/20
  * Email fury.amir93@gmail.com
  */
 abstract class BaseFragment<B : ViewDataBinding> : Fragment() {

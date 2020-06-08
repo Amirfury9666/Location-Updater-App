@@ -10,7 +10,10 @@ import androidx.room.PrimaryKey
 import com.fury.locationupdater.utils.toast
 import java.text.SimpleDateFormat
 import java.util.*
-
+/**
+ * Created By Amir Fury on 08/06/20
+ * Email fury.amir93@gmail.com
+ */
 @Entity
 data class LocationEntity(
     var locationName: String,

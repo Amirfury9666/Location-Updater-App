@@ -20,7 +20,10 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
-
+/**
+ * Created By Amir Fury on 08/06/20
+ * Email fury.amir93@gmail.com
+ */
 private const val UPDATE_LOCATION_INTERVAL = 5000L
 private val TAG = LocationUpdatesService::class.java.simpleName
 

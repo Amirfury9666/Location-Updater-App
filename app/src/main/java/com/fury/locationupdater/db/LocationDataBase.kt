@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-
+/**
+ * Created By Amir Fury on 08/06/20
+ * Email fury.amir93@gmail.com
+ */
 @Database(entities = [LocationEntity::class] ,version = 1,exportSchema = true)
 abstract class LocationDataBase : RoomDatabase(){
 

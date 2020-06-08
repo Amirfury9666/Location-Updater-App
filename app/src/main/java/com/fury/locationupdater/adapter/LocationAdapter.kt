@@ -4,7 +4,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.fury.locationupdater.R
 import com.fury.locationupdater.core.BaseRecyclerViewAdapter
 import com.fury.locationupdater.db.LocationEntity
-
+/**
+ * Created By Amir Fury on 08/06/20
+ * Email fury.amir93@gmail.com
+ */
 class LocationAdapter : BaseRecyclerViewAdapter<LocationEntity>(DiffCallBack()) {
     override fun getItemViewType(position: Int): Int {
         return R.layout.location_item
