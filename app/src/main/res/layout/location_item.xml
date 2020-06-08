@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.fury.locationupdater.db.LocationEntity" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/latText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latitude:"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_toLeftOf="@id/mapButton"
+                android:layout_toRightOf="@+id/latText"
+                android:textColor="#212121"
+                android:text="@{model.lat+``}"
+                android:singleLine="true"
+                android:textSize="18sp"
+                tools:text="23.33333" />
+
+            <TextView
+                android:id="@+id/longText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/latText"
+                android:layout_marginTop="20dp"
+                android:text="Longitude:"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/longText"
+                android:layout_marginLeft="16dp"
+                android:layout_toLeftOf="@id/mapButton"
+                android:layout_toRightOf="@+id/longText"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:singleLine="true"
+                android:text="@{model.lang+``}"
+                tools:text="23.33333" />
+
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/longText"
+                android:layout_marginTop="20dp"
+                android:text="Time:"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/timeText"
+                android:layout_marginLeft="16dp"
+                android:layout_toLeftOf="@id/mapButton"
+                android:layout_toRightOf="@+id/longText"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                app:setDate="@{model.time}"
+                tools:text="23.33333" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mapButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:onClick="@{model::onLocationClick}"
+                android:text="View on map" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
+

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Location Updater</string>
+    <string name="locationUpdatesDisc">Location updater is Running</string>
+</resources>
